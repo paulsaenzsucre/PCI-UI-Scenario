@@ -1,0 +1,15 @@
+.title {
+  text-align: center;
+}
+
+.head {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.cont {
+  height: 900;
+  width: 1920;
+}
