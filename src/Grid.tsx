@@ -5,6 +5,11 @@ import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 import "./style.css";
 
+// enable sorting on all columns by default
+const defaultColDef = {
+  sortable: true
+};
+
 const columnDefs: ColDef[] = [
   { field: "designation", headerName: "Designation" },
   { field: "discovery_date", headerName: "Discovery Date" },
@@ -24,6 +29,7 @@ const NeoGrid = (): JSX.Element => {
       <h1 className="title">Near-Earth Object Overview</h1>
       <AgGridReact
         rowData={data}
+        defaultColDef={defaultColDef}
         columnDefs={columnDefs}
         rowGroupPanelShow={'always'}
       />
