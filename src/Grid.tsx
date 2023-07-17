@@ -61,11 +61,20 @@ const NeoGrid = (): JSX.Element => {
     });
   }, []);
 
+  const clearFilters = useCallback(() => {
+    gridRef.current?.api.setFilterModel(null);
+  }, []);
+
+  const clearSortAndFilters = () => {
+    clearSort();
+    clearFilters();
+  };
+
   return (
     <div className="ag-theme-alpine" style={{ height: 900, width: 1920 }}>
-      <div>
+      <div className="head">
         <h1 className="title">Near-Earth Object Overview</h1>
-        <button onClick={clearSort}>Clear Filters and Sorters</button>
+        <button onClick={clearSortAndFilters}>Clear Filters and Sorters</button>
       </div>
       
       <AgGridReact
