@@ -13,7 +13,16 @@ const defaultColDef = {
 
 const columnDefs: ColDef[] = [
   { field: "designation", filter: 'agTextColumnFilter', headerName: "Designation" },
-  { field: "discovery_date", filter: 'agDateColumnFilter', headerName: "Discovery Date" },
+  { field: "discovery_date", filter: 'agDateColumnFilter', headerName: "Discovery Date", valueFormatter: (params) => {
+    const date = new Date(params.value);
+    const formattedDate = date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    });
+    return formattedDate;
+    },
+  },
   { field: "h_mag", headerName: "H (mag)" },
   { field: "moid_au", headerName: "MOID (au)" },
   { field: "q_au_1", headerName: "q (au)" },
