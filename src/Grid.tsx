@@ -1,6 +1,7 @@
 import { AgGridReact } from "ag-grid-react";
 import { ColDef } from "ag-grid-community";
 import data from "./near-earth-asteroids.json";
+import 'ag-grid-enterprise';
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 import "./style.css";
@@ -57,6 +58,7 @@ const NeoGrid = (): JSX.Element => {
         defaultColDef={defaultColDef}
         columnDefs={columnDefs}
         rowGroupPanelShow={'always'}
+        enableRangeSelection={true}
       />
     </div>
   );
