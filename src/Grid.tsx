@@ -1,3 +1,4 @@
+import { useCallback, useRef } from "react";
 import { AgGridReact } from "ag-grid-react";
 import { ColDef } from "ag-grid-community";
 import data from "./near-earth-asteroids.json";
@@ -49,11 +50,26 @@ const columnDefs: ColDef[] = [
   { field: "orbit_class", filter: 'agTextColumnFilter', headerName: "Orbit Class", enableRowGroup: true, },
 ];
 
+
+
 const NeoGrid = (): JSX.Element => {
+  const gridRef = useRef<AgGridReact>(null);
+
+  const clearSort = useCallback(() => {
+    gridRef.current?.columnApi?.applyColumnState({
+      defaultState: { sort: null },
+    });
+  }, []);
+
   return (
     <div className="ag-theme-alpine" style={{ height: 900, width: 1920 }}>
-      <h1 className="title">Near-Earth Object Overview</h1>
+      <div>
+        <h1 className="title">Near-Earth Object Overview</h1>
+        <button onClick={clearSort}>Clear Filters and Sorters</button>
+      </div>
+      
       <AgGridReact
+        ref={gridRef}
         rowData={data}
         defaultColDef={defaultColDef}
         columnDefs={columnDefs}
