@@ -8,3 +8,8 @@
   align-items: center;
   gap: 15px;
 }
+
+.cont {
+  height: 900;
+  width: 1920;
+}
