@@ -7,20 +7,21 @@ import "./style.css";
 
 // enable sorting on all columns by default
 const defaultColDef = {
-  sortable: true
+  sortable: true,
+  filter: 'agNumberColumnFilter'
 };
 
 const columnDefs: ColDef[] = [
-  { field: "designation", headerName: "Designation" },
-  { field: "discovery_date", headerName: "Discovery Date" },
+  { field: "designation", filter: 'agTextColumnFilter', headerName: "Designation" },
+  { field: "discovery_date", filter: 'agDateColumnFilter', headerName: "Discovery Date" },
   { field: "h_mag", headerName: "H (mag)" },
   { field: "moid_au", headerName: "MOID (au)" },
   { field: "q_au_1", headerName: "q (au)" },
   { field: "q_au_2", headerName: "Q (au)" },
   { field: "period_yr", headerName: "Period (yr)" },
   { field: "i_deg", headerName: "Inclination (deg)" },
-  { field: "pha", headerName: "Potentially Hazardous" },
-  { field: "orbit_class", headerName: "Orbit Class", enableRowGroup: true, },
+  { field: "pha", filter: 'agTextColumnFilter', headerName: "Potentially Hazardous" },
+  { field: "orbit_class", filter: 'agTextColumnFilter', headerName: "Orbit Class", enableRowGroup: true, },
 ];
 
 const NeoGrid = (): JSX.Element => {
